@@ -146,7 +146,7 @@ class Final_Model:
         # Returns:
             updates the source dataframe by replacing it with a new one"""
 
-        destino = Path(os.getcwd() + "\\data\\processed")
+        destino = Path.cwd()/"data/processed/"
 
         df = self.df
         df.loc[len(df)] = np.array([self.GDP, self.Population,
