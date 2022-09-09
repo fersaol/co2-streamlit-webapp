@@ -4,7 +4,7 @@ from math import ceil
 import pandas as pd
 import numpy as np
 # import matplotlib.pyplot as plt
-import plotly.express as px
+# import plotly.express as px
 from sklearn.model_selection import cross_val_score,RepeatedKFold,train_test_split
 from sklearn.compose import make_column_transformer
 from sklearn.feature_selection import RFECV
