@@ -245,7 +245,7 @@ def dataframes_charger(filename):
     # Return:
         pd.DataFrame"""
 
-    current_path = Path(os.getcwd() + "\\data\\processed\\")
+    current_path = Path(os.getcwd() + "\\data\\processed")
     data = pd.read_csv(current_path/filename)
     return data
 
