@@ -245,10 +245,8 @@ def dataframes_charger(filename):
     # Return:
         pd.DataFrame"""
 
-    current_path = Path(os.getcwd()+ "\\data\\processed")
-    file = filename
-    full_path = current_path/file
-    data = pd.read_csv(full_path)
+    current_path = Path(os.getcwd() + "\\data\\processed\\")
+    data = pd.read_csv(current_path + filename)
     return data
 
 def models_saver(object,filename):
