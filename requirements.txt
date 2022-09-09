@@ -4,5 +4,4 @@ sklearn
 plotly
 matplotlib
 Path
-math
 joblib
