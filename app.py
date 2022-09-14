@@ -17,7 +17,7 @@ def get_df():
     df = pd.read_csv(file)
     return df
 
-cloned_output = copy.deepcopy(get_df())
+data = get_df()
 
 # App Name
 st.title("Environmental Energy Production Checker")
@@ -31,7 +31,7 @@ metric = st.selectbox(label="Select the metric to display on the map",
         options=("CO2_emission","eficiency","Energy_production",
         "Energy_consumption","GDP","Population"))
 
-mapa = px.choropleth(data_frame=cloned_output,locations="CODE_x",color=metric,
+mapa = px.choropleth(data_frame=data,locations="CODE_x",color=metric,
                 color_continuous_scale=px.colors.sequential.Plasma,
                 title=f"World's {metric}",hover_name="Country")
 
@@ -69,7 +69,7 @@ prediction = st.button(label="Predict and Classify",key="Prediction_button",)
 
 if prediction:
     pred = mymodel.Final_Model(Country,Year,GDP,Population,Energy_production,
-                Energy_consumption,CO2_emission,energy_type,cloned_output).run_whole_model()
+                Energy_consumption,CO2_emission,energy_type,data).run_whole_model()
     
     resultado = st.write(pred)
 
