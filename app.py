@@ -10,11 +10,13 @@ sys.path.append(os.getcwd() + "\\utils")
 from model import modelo_final_concampos as mymodel
 from utils import general_purpose as gp
 
-@st.cache(allow_output_mutation=True)
+@st.cache()
 def get_df():
     file = os.path.join(os.getcwd(),"data/processed/df_clusters_v1.csv")
     df = pd.read_csv(file)
     return df
+
+df = get_df()
 
 # App Name
 st.title("Environmental Energy Production Checker")
@@ -28,7 +30,7 @@ metric = st.selectbox(label="Select the metric to display on the map",
         options=("CO2_emission","eficiency","Energy_production",
         "Energy_consumption","GDP","Population"))
 
-mapa = px.choropleth(data_frame=get_df(),locations="CODE_x",color=metric,
+mapa = px.choropleth(data_frame=df,locations="CODE_x",color=metric,
                 color_continuous_scale=px.colors.sequential.Plasma,
                 title=f"World's {metric}",hover_name="Country")
 
@@ -66,7 +68,7 @@ prediction = st.button(label="Predict and Classify",key="Prediction_button",)
 
 if prediction:
     pred = mymodel.Final_Model(Country,Year,GDP,Population,Energy_production,
-                Energy_consumption,CO2_emission,energy_type,get_df()).run_whole_model()
+                Energy_consumption,CO2_emission,energy_type,df).run_whole_model()
     
     resultado = st.write(pred)
 
