@@ -35,9 +35,9 @@ class Final_Model:
     def __init__(self,Country:str,Year:str,GDP:Union[int,float],
                 Population:Union[int,float],Energy_production:Union[int,float],
                 Energy_consumption:Union[int,float],CO2_emission:Union[int,float],
-                energy_type:Union[int,float]):
+                energy_type:Union[int,float],df):
         self.ruta = Path.cwd()/"model"
-        self.df = gp.dataframes_charger("df_clusters_v1.csv")
+        self.df = df
         self.Year = Year
         self.Country = Country.capitalize()
         self.GDP = GDP

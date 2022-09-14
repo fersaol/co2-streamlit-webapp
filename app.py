@@ -3,11 +3,18 @@ import sys
 import os
 from PIL import Image
 import datetime
+import plotly.express as px
+import pandas as pd
 sys.path.append(os.getcwd() + "\\model")
 sys.path.append(os.getcwd() + "\\utils")
 from model import modelo_final_concampos as mymodel
-from utils import general_purpose as gps
+from utils import general_purpose as gp
 
+@st.cache
+def get_df():
+    file = os.getcwd() + "\\data\\processed\\df_clusters_v1.csv"
+    df = pd.read_csv(file)
+    return df
 
 # App Name
 st.title("Environmental Energy Production Checker")
@@ -16,6 +23,16 @@ st.write("The tool uses Machine Learning Algortihms to analize the energy produc
 
 image = Image.open("chimeneas.jpg")
 st.image(image,use_column_width=True)
+
+metric = st.selectbox(label="Select the metric to display on the map",
+        options=("CO2_emission","eficiency","Energy_production",
+        "Energy_consumption","GDP","Population"))
+
+mapa = px.choropleth(data_frame=get_df(),locations="CODE_x",color=metric,
+                color_continuous_scale=px.colors.sequential.Viridis,
+                title=f"World's {metric}")
+
+st.plotly_chart(mapa, use_container_width=True,sharing="streamlit")
 
 st.write("Please enter your data below:")
 
@@ -45,11 +62,11 @@ energy_type= st.number_input(label="Enter the code -> 0: renewables, 1: nuclear,
                             key="energy_type_input",
                             min_value=0,max_value=4)
 
-prediction = st.button(label="Predict and Classifies",key="Prediction_button",)
+prediction = st.button(label="Predict and Classify",key="Prediction_button",)
 
 if prediction:
     pred = mymodel.Final_Model(Country,Year,GDP,Population,Energy_production,
-                Energy_consumption,CO2_emission,energy_type).run_whole_model()
+                Energy_consumption,CO2_emission,energy_type,get_df()).run_whole_model()
     
     resultado = st.write(pred)
 
