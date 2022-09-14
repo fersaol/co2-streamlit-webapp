@@ -29,8 +29,8 @@ metric = st.selectbox(label="Select the metric to display on the map",
         "Energy_consumption","GDP","Population"))
 
 mapa = px.choropleth(data_frame=get_df(),locations="CODE_x",color=metric,
-                color_continuous_scale=px.colors.sequential.Darkmint,
-                title=f"World's {metric}")
+                color_continuous_scale=px.colors.sequential.Plasma,
+                title=f"World's {metric}",hover_name="Country")
 
 st.plotly_chart(mapa, use_container_width=True,sharing="streamlit")
 
