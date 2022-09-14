@@ -12,7 +12,7 @@ from utils import general_purpose as gp
 
 @st.cache
 def get_df():
-    file = os.path.join(os.getcwd(),"/data/processed/df_clusters_v1.csv")
+    file = os.path.join(os.getcwd(),"data/processed/df_clusters_v1.csv")
     df = pd.read_csv(file)
     return df
 
