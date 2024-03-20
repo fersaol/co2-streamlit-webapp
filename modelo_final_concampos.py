@@ -338,8 +338,8 @@ class Final_Model:
                         :rainbow[The efficiency predicted for your country is {efi} and is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ---------- ***LOW PRODUCTION-LOW CONTAMINATION*** ----------  
-                        The energy production is low but the contamination it also is. In this group the production comes mainly from renewables but  
-                        also from nuclear and natural gas. The energy mix is not ideal but the emitted co2 has no great impact on environment   
+                        The energy production is low but the contamination too. In this group the production comes mainly from renewables but,  
+                        also from nuclear and natural gas. The energy mix is not ideal, but the emitted co2 has no great impact on environment   
                         -------------------- *RECOMMENDATION* -------------------  
                         As the production remains steady the country can continues this way. But if the aim is to increase energy production the mix  
                         should be improved in order to lower the co2 emissions. Reinforce renewables]
@@ -362,7 +362,7 @@ class Final_Model:
                         ------ ***GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION*** ------  
                         The production amount is good, coming from a good balanced production mix and using all of them proportionally.   
                         ------------------------- *RECOMMENDATION* -----------------------  
-                        Just keep this way, your country is environmental friendly and knows how to balance production and world care.]
+                        Just keep this way, your country is environmentally friendly and knows how to balance production and world care.]
                         '''
             Final_Model.registration(self)
             return flag
