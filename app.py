@@ -6,10 +6,13 @@ import datetime
 import plotly.express as px
 import pandas as pd
 import copy
-sys.path.append(os.getcwd() + "\\model")
-sys.path.append(os.getcwd() + "\\utils")
-from model import modelo_final_concampos as mymodel
-from utils import general_purpose as gp
+#sys.path.append(os.getcwd() + "\\model")
+#sys.path.append(os.getcwd() + "\\utils")
+#from model import modelo_final_concampos as mymodel
+#from utils import general_purpose as gp
+import modelo_final_concampos as mymodel
+import general_purpose as gp
+
 
 @st.cache_data()
 def get_df():
