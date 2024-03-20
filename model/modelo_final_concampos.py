@@ -2,18 +2,18 @@ import sys
 import os
 from typing import Union
 from pathlib import Path
-sys.path.append(os.getcwd() + "\\utils")
+sys.path.append(os.getcwd().replace("model","utils"))
 
 import pandas as pd
 import numpy as np
-from utils import general_purpose as gp
+import general_purpose as gp
 import joblib
 from sklearn.preprocessing import PowerTransformer,RobustScaler
 
 class Final_Model:
 
     """Clase que trata los datos y realiza la clusterización, predicción y 
-    clasificación, combina los tres resultados y devuelve una explicación
+    clasificación, convina los tres resultados y devuelve una explicación
     
     ----------------------------------------------------
     # Args:
@@ -35,9 +35,9 @@ class Final_Model:
     def __init__(self,Country:str,Year:str,GDP:Union[int,float],
                 Population:Union[int,float],Energy_production:Union[int,float],
                 Energy_consumption:Union[int,float],CO2_emission:Union[int,float],
-                energy_type:Union[int,float],df):
-        self.ruta = Path.cwd()/"model"
-        self.df = df
+                energy_type:Union[int,float]):
+        self.ruta = Path(os.getcwd().replace("notebooks","model"))
+        self.df = gp.dataframes_charger("df_clusters_v1.csv")
         self.Year = Year
         self.Country = Country.capitalize()
         self.GDP = GDP
@@ -146,7 +146,7 @@ class Final_Model:
         # Returns:
             updates the source dataframe by replacing it with a new one"""
 
-        destino = Path.cwd()/"data/processed/"
+        destino = Path(os.getcwd().replace("notebooks","data/processed"))
 
         df = self.df
         df.loc[len(df)] = np.array([self.GDP, self.Population,
@@ -229,7 +229,14 @@ class Final_Model:
 
         cluster = Final_Model.clustering(self)
         reg_vars = {
-            0:['balance', 'Energy_consumption', 'Energy_production', 'CO2_emission'],
+            0:['balance',
+                'CO2_emission',
+                'Population',
+                'per_capita_production',
+                'energy_dependecy',
+                'Energy_intensity_by_GDP',
+                'use_intensity_pc',
+                'Energy_production'],
             1:['CO2_emission', 'co2_pc', 'per_capita_production', 'Energy_consumption'],
             2:['GDP', 'Population', 'Energy_consumption', 'CO2_emission', 'balance'],
             3:['CO2_emission', 'Energy_production', 'balance', 'Energy_consumption']
@@ -311,87 +318,70 @@ class Final_Model:
 
         tag = Final_Model.classification(self)[0]
         efi = round(Final_Model.regression(self)[0],3)
-        Final_Model.registration(self)
 
         if tag == 0:
-            return f"""
-                    -----------------------------------------------------------
-                    The efficiency predicted for your country is {efi},
-                    what means it is classified in the environmental group {tag}.
-                    This group is characterized by the following description:\n
+            print(f"""The efficiency predicted for your country is {efi}, 
+what means it is classified in the environmental group {tag}.
+This group is characterized by the following description:
 
-                    ### LOW PRODUCTION-HIGH CONTAMINATION
-                    The energy production is low but it is not the lower compared
-                    with the rest of the world energy producers. The production
-                    is based on natural gas, petroleum and coal and because of
-                    this energy mix the co2 emissions are high.
+------------LOW PRODUCTION-HIGH CONTAMINATION------------
+The energy production is low but it is not the lower compared
+with the rest of the world energy producers. The production
+is based on natural gas, petroleum and coal and because of
+this energy mix the co2 emissions are high.
 
-                    ### RECOMMENDATION
-                    Your efficiency can improve a lot since your energy production
-                    mix is not optimal. Focus on changing your energy sources.
-
-                    -----------------------------------------------------------
-                    """
+-----------------------RECOMMENDATION----------------------
+Your efficiency can improve a lot since your energy production
+mix is not optimal. Focus on changing your energy sources.
+""")
 
         elif tag == 1:
-            return f"""
-                    -----------------------------------------------------------
-                    The efficiency predicted for your country is {efi}, 
-                    what means it is classified in the environmental group {tag}.
-                    This group is characterized by the following description:
+            print(f"""The efficiency predicted for your country is {efi}, 
+what means it is classified in the environmental group {tag}.
+This group is characterized by the following description:
 
-                    ### LOW PRODUCTION-LOW CONTAMINATION
-                    The energy production is low but the contamination it also is.
-                    In this group the production comes mainly from renewables but
-                    also from nuclear and natural gas. The energy mix is not ideal,
-                    but the emitted co2 has no great impact on environment
+----------LOW PRODUCTION-LOW CONTAMINATION----------
+The energy production is low but the contamination it also is.
+In this group the production comes mainly from renewables but
+also from nuclear and natural gas. The energy mix is not ideal,
+but the emitted co2 has no great impact on environment
 
-                    ### RECOMMENDATION
-                    As the production remains steady the country can continues this
-                    way. But if the aim is to increase energy production the mix
-                    should be improved in order to lower the co2 emissions. Reinforce
-                    renewables.
-                    
-                    -----------------------------------------------------------
-                    """
+--------------------RECOMMENDATION-------------------
+As the production remains steady the country can continues this
+way. But if the aim is to increase energy production the mix
+should be improved in order to lower the co2 emissions. Reinforce
+renewables""")
 
         elif tag == 2:
-            return f"""
-                    -----------------------------------------------------------
-                    The efficiency predicted for your country is {efi}, 
-                    what means it is classified in the environmental group {tag}.
-                    This group is characterized by the following description:
+            print(f"""The efficiency predicted for your country is {efi}, 
+what means it is classified in the environmental group {tag}.
+This group is characterized by the following description:
 
-                    ### VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION
-                    The energy production is very high and contamination too, so
-                    you are one of the world's major suppliers. The production in
-                    this group comes normally from petroleum, coal and natural
-                    gas
+------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------
+The energy production is very high and contamination too, so
+you are one of the world's major suppliers. The production in
+this group comes normally from petroleum, coal and natural
+gas
 
-                    ### RECOMMENDATION
-                    Your country has great impact on environmental care so it would
-                    be good diversify the production mix enhancing renewables and
-                    natural gas if possible. In any case, reducing coal and pretroleum
-                    would be great.
-                    
-                    -----------------------------------------------------------
-                    """
+-----------------------RECOMMENDATION---------------------
+Your country has great impact on environmental care so it would
+be good diversify the production mix enhancing renewables and
+natural gas if possible. In any case, reducing coal and pretroleum
+would be great.""")
 
         else:
-            return f"""
-                    -----------------------------------------------------------
-                    The efficiency predicted for your country is {efi}, 
-                    what meansit is classified in the environmental group {tag}.
-                    This group is characterized by the following description:
+            print(f"""The efficiency predicted for your country is {efi}, 
+what meansit is classified in the environmental group {tag}.
+This group is characterized by the following description:
 
-                    ### GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION
-                    The production amount is good, coming from a good balanced production
-                    mix and using all of them proportionally.
+------GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION------
+The production amount is good, coming from a good balanced production
+mix and using all of them proportionally.
 
-                    ### RECOMMENDATION
-                    Just keep this way, your country is environmental friendly and
-                    knows how to balance production and world care.
+-------------------------RECOMMENDATION-----------------------
+Just keep this way, your country is environmental friendly and
+knows how to balance production and world care.
+""")
 
-                    -----------------------------------------------------------
-                    """ 
+        Final_Model.registration(self)
 
