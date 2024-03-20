@@ -327,7 +327,7 @@ class Final_Model:
                         :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ------------ ***LOW PRODUCTION-HIGH CONTAMINATION*** ------------  
-                        The energy production is low but it is not the lower compared with the rest of the world energy producers. The production  
+                        The energy production is low but it is not the lower compared with the rest of the world energy producers. The production 
                         is based on natural gas, petroleum and coal and because of this energy mix the co2 emissions are high.   
                         ----------------------- *RECOMMENDATION* ----------------------  
                         Your efficiency can improve a lot since your energy production mix is not optimal. Focus on changing your energy sources.]
