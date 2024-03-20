@@ -323,8 +323,7 @@ class Final_Model:
             efi = round(Final_Model.regression(self)[0],3)
 
             if tag == 0:
-                flag= tag
-                print(f"""The efficiency predicted for your country is {efi}, 
+                flag= f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
 
@@ -337,11 +336,10 @@ class Final_Model:
     -----------------------RECOMMENDATION----------------------
     Your efficiency can improve a lot since your energy production
     mix is not optimal. Focus on changing your energy sources.
-    """)
+    """
 
             elif tag == 1:
-                flag= tag
-                print(f"""The efficiency predicted for your country is {efi}, 
+                flag= f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
 
@@ -355,11 +353,10 @@ class Final_Model:
     As the production remains steady the country can continues this
     way. But if the aim is to increase energy production the mix
     should be improved in order to lower the co2 emissions. Reinforce
-    renewables""")
+    renewables"""
 
             elif tag == 2:
-                flag= tag
-                print(f"""The efficiency predicted for your country is {efi}, 
+                flag= f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
 
@@ -373,11 +370,10 @@ class Final_Model:
     Your country has great impact on environmental care so it would
     be good diversify the production mix enhancing renewables and
     natural gas if possible. In any case, reducing coal and pretroleum
-    would be great.""")
+    would be great."""
 
             else:
-                flag= tag
-                print(f"""The efficiency predicted for your country is {efi}, 
+                flag= f"""The efficiency predicted for your country is {efi}, 
     what meansit is classified in the environmental group {tag}.
     This group is characterized by the following description:
 
@@ -388,9 +384,10 @@ class Final_Model:
     -------------------------RECOMMENDATION-----------------------
     Just keep this way, your country is environmental friendly and
     knows how to balance production and world care.
-    """)
-            return flag,efi
+    """
             Final_Model.registration(self)
+            return flag,efi
+            
         except Exception as e:
             print(e)
             print("Something went wrong, please check the data provided")
