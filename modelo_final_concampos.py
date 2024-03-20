@@ -356,7 +356,7 @@ class Final_Model:
     renewables"""
 
             elif tag == 2:
-                flag= f"""The efficiency predicted for your country is {efi}, 
+                flag= f"""<p>The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:  
 
@@ -370,7 +370,7 @@ class Final_Model:
     Your country has great impact on environmental care so it would
     be good diversify the production mix enhancing renewables and
     natural gas if possible. In any case, reducing coal and pretroleum
-    would be great."""
+    would be great.</p>"""
 
             else:
                 flag= f"""The efficiency predicted for your country is {efi}, 
