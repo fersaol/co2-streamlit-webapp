@@ -13,7 +13,7 @@ from sklearn.preprocessing import PowerTransformer,RobustScaler
 class Final_Model:
 
     """Clase que trata los datos y realiza la clusterización, predicción y 
-    clasificación, convina los tres resultados y devuelve una explicación
+    clasificación, combina los tres resultados y devuelve una explicación
     
     ----------------------------------------------------
     # Args:
