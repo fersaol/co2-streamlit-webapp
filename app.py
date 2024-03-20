@@ -11,7 +11,7 @@ sys.path.append(os.getcwd() + "\\utils")
 from model import modelo_final_concampos as mymodel
 from utils import general_purpose as gp
 
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data()
 def get_df():
     file = os.path.join(os.getcwd(),"data/processed/df_clusters_v1.csv")
     df = pd.read_csv(file)
