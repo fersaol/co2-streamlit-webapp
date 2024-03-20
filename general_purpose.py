@@ -279,20 +279,23 @@ def cross_validation_report(estimador:any,x:pd.DataFrame,y:pd.DataFrame,
         mean_std.append(round(np.std(val),3))
         print(f"  - {lista_score[i]}_medio: {mean_val[i]} (+/- {mean_std[i]} std)")
 
-def dataframes_charger(filename:str) -> pd.DataFrame:
+def dataframes_charger(filename:str,
+                       route=False) -> pd.DataFrame:
     """Función que importa el csv deseado desde el directorio
     
     -------------------------------------
     # Args:
-       - filename: (str)
-
+        - filename: (str) name of the file
+        - route (str) route if different from the current one\n
+        (default: False)
     -------------------------------------
     # Return:
         pd.DataFrame"""
-
-    current_path = Path(os.getcwd().replace("notebooks","/data/processed/"))
-    file = filename
-    data = pd.read_csv(current_path/file)
+    if not route:
+        current_path = Path(os.getcwd().join(f"/{filename}"))
+    else:
+        current_path = route
+    data = pd.read_csv(current_path)
     return data
 
 def models_saver(object:any,filename:str) -> str:

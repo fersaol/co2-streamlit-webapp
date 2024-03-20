@@ -37,7 +37,7 @@ class Final_Model:
                 Energy_consumption:Union[int,float],CO2_emission:Union[int,float],
                 energy_type:Union[int,float]):
         self.ruta = Path(os.getcwd().replace("notebooks","model"))
-        self.df = gp.dataframes_charger("df_clusters_v1.csv")
+        self.df = gp.dataframes_charger(route="data/processed/df_clusters_v1.csv")
         self.Year = Year
         self.Country = Country.capitalize()
         self.GDP = GDP
