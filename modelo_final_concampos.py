@@ -323,61 +323,47 @@ class Final_Model:
             efi = round(Final_Model.regression(self)[0],3)
 
             if tag == 0:
-                flag= f"""The efficiency predicted for your country is {efi}, 
-    what means it is classified in the environmental group {tag}.
-    This group is characterized by the following description:
-
-    ------------LOW PRODUCTION-HIGH CONTAMINATION------------
-    The energy production is low but it is not the lower compared
-    with the rest of the world energy producers. The production
-    is based on natural gas, petroleum and coal and because of
-    this energy mix the co2 emissions are high.
-
-    -----------------------RECOMMENDATION----------------------
-    Your efficiency can improve a lot since your energy production
-    mix is not optimal. Focus on changing your energy sources.
-    """
+                flag= f'''
+                        :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
+                        This group is characterized by the following description:   
+                        ------------ ***LOW PRODUCTION-HIGH CONTAMINATION*** ------------  
+                        The energy production is low but it is not the lower compared with the rest of the world energy producers. The production  
+                        is based on natural gas, petroleum and coal and because of this energy mix the co2 emissions are high.   
+                        ----------------------- *RECOMMENDATION* ----------------------  
+                        Your efficiency can improve a lot since your energy production mix is not optimal. Focus on changing your energy sources.]
+                        '''
 
             elif tag == 1:
-                flag= f"""The efficiency predicted for your country is {efi}, 
-    what means it is classified in the environmental group {tag}.
-    This group is characterized by the following description:
-
-    ----------LOW PRODUCTION-LOW CONTAMINATION----------
-    The energy production is low but the contamination it also is.
-    In this group the production comes mainly from renewables but
-    also from nuclear and natural gas. The energy mix is not ideal,
-    but the emitted co2 has no great impact on environment
-
-    --------------------RECOMMENDATION-------------------
-    As the production remains steady the country can continues this
-    way. But if the aim is to increase energy production the mix
-    should be improved in order to lower the co2 emissions. Reinforce
-    renewables"""
+                flag= f'''
+                        :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
+                        This group is characterized by the following description:   
+                        ---------- ***LOW PRODUCTION-LOW CONTAMINATION*** ----------  
+                        The energy production is low but the contamination it also is. In this group the production comes mainly from renewables but  
+                        also from nuclear and natural gas. The energy mix is not ideal but the emitted co2 has no great impact on environment   
+                        -------------------- *RECOMMENDATION* -------------------  
+                        As the production remains steady the country can continues this way. But if the aim is to increase energy production the mix  
+                        should be improved in order to lower the co2 emissions. Reinforce renewables]
+                        '''
 
             elif tag == 2:
                 flag= f'''
                         :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
-                        ------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------  
+                        ------ ***VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION*** ------   
                         The energy production is very high and contamination too, so you are one of the world's major suppliers. The production in this group comes normally from petroleum, coal and natural gas.   
-                        -----------------------RECOMMENDATION---------------------  
+                        ----------------------- *RECOMMENDATION* ---------------------  
                         Your country has great impact on environmental care so it would be good diversify the production mix enhancing renewables and natural gas if possible. In any case, reducing coal and pretroleum would be great.]
                         '''
 
             else:
-                flag= f"""The efficiency predicted for your country is {efi}, 
-    what meansit is classified in the environmental group {tag}.
-    This group is characterized by the following description:
-
-    ------GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION------
-    The production amount is good, coming from a good balanced production
-    mix and using all of them proportionally.
-
-    -------------------------RECOMMENDATION-----------------------
-    Just keep this way, your country is environmental friendly and
-    knows how to balance production and world care.
-    """
+                flag= f'''
+                        :rainbow[The efficiency predicted for your country is {efi}, what meansit is classified in the environmental group {tag}.  
+                        This group is characterized by the following description:   
+                        ------ ***GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION*** ------  
+                        The production amount is good, coming from a good balanced production mix and using all of them proportionally.   
+                        ------------------------- *RECOMMENDATION* -----------------------  
+                        Just keep this way, your country is environmental friendly and knows how to balance production and world care.]
+                        '''
             Final_Model.registration(self)
             return flag
             
