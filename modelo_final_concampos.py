@@ -324,7 +324,7 @@ class Final_Model:
 
             if tag == 0:
                 flag= f'''
-                        :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
+                        :rainbow[The efficiency predicted for your country is {efi} and is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ------------ ***LOW PRODUCTION-HIGH CONTAMINATION*** ------------  
                         The energy production is low but it is not the lower compared with the rest of the world energy producers. The production 
@@ -335,7 +335,7 @@ class Final_Model:
 
             elif tag == 1:
                 flag= f'''
-                        :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
+                        :rainbow[The efficiency predicted for your country is {efi} and is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ---------- ***LOW PRODUCTION-LOW CONTAMINATION*** ----------  
                         The energy production is low but the contamination it also is. In this group the production comes mainly from renewables but  
@@ -347,7 +347,7 @@ class Final_Model:
 
             elif tag == 2:
                 flag= f'''
-                        :rainbow[The efficiency predicted for your country is {efi}, what means it is classified in the environmental group {tag}.  
+                        :rainbow[The efficiency predicted for your country is {efi} and is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ------ ***VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION*** ------   
                         The energy production is very high and contamination too, so you are one of the world's major suppliers. The production in this group comes normally from petroleum, coal and natural gas.   
@@ -357,7 +357,7 @@ class Final_Model:
 
             else:
                 flag= f'''
-                        :rainbow[The efficiency predicted for your country is {efi}, what meansit is classified in the environmental group {tag}.  
+                        :rainbow[The efficiency predicted for your country is {efi} and is classified in the environmental group {tag}.  
                         This group is characterized by the following description:   
                         ------ ***GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION*** ------  
                         The production amount is good, coming from a good balanced production mix and using all of them proportionally.   
