@@ -66,8 +66,9 @@ Energy_consumption= st.number_input(label="Enter the Amount of Energy Consumptio
 CO2_emission= st.number_input(label="Enter the CO2 Emissions of your Country",
                 key="co2_input")
 
-energy_type= st.number_input(label="Enter the code -> 0: renewables, 1: nuclear,\
-                                    2: gas, 3: petroleum, 4: coal",
+energy_type= st.number_input(label="Enter one code of -> {0: renewables, 1: nuclear,\
+                                    2: gas, 3: petroleum, 4: coal} \
+                                    for your main last year source of energy",
                             key="energy_type_input",
                             min_value=0,max_value=4)
 
