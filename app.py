@@ -43,7 +43,7 @@ st.plotly_chart(mapa, use_container_width=True,sharing="streamlit")
 st.write("Please enter your data below:")
 
 Country = st.selectbox(label="Select your Country",
-                        options=gp.get_countries_list(),
+                        options=data.columns,
                         key="Country_input"
                         )
 
