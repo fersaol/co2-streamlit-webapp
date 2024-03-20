@@ -42,7 +42,10 @@ st.plotly_chart(mapa, use_container_width=True,sharing="streamlit")
 
 st.write("Please enter your data below:")
 
-Country = st.text_input(label="Enter your country name",key="country_input")
+Country = st.selectbox(label="Select your Country",
+                        options=gp.get_countries_list(),
+                        key="Country_input"
+                        )
 
 Year= st.date_input(label="Autocompletion field, date in format: yyyy-mm-dd",
                     value=datetime.datetime.today(),
