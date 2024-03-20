@@ -239,7 +239,7 @@ class Final_Model:
                 'Energy_production'],
             1:['CO2_emission',
                'co2_pc',
-               'energy_production',
+               'Energy_production',
                'Energy_consumption'],
             2:['GDP', 'Population', 'Energy_consumption', 'CO2_emission', 'balance'],
             3:['CO2_emission', 'Energy_production', 'balance', 'Energy_consumption']
