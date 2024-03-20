@@ -237,10 +237,10 @@ class Final_Model:
                 'Energy_intensity_by_GDP',
                 'use_intensity_pc',
                 'Energy_production'],
-            1:['CO2_emission',
-               'co2_pc',
-               'Energy_production',
-               'Energy_consumption'],
+            1:['Energy_production', 
+               'Energy_consumption', 
+               'CO2_emission',
+               'co2_pc'],
             2:['GDP', 'Population', 'Energy_consumption', 'CO2_emission', 'balance'],
             3:['CO2_emission', 'Energy_production', 'balance', 'Energy_consumption']
                     }
