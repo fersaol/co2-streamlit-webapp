@@ -323,6 +323,7 @@ class Final_Model:
             efi = round(Final_Model.regression(self)[0],3)
 
             if tag == 0:
+                flag= tag
                 print(f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
@@ -339,6 +340,7 @@ class Final_Model:
     """)
 
             elif tag == 1:
+                flag= tag
                 print(f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
@@ -356,6 +358,7 @@ class Final_Model:
     renewables""")
 
             elif tag == 2:
+                flag= tag
                 print(f"""The efficiency predicted for your country is {efi}, 
     what means it is classified in the environmental group {tag}.
     This group is characterized by the following description:
@@ -373,6 +376,7 @@ class Final_Model:
     would be great.""")
 
             else:
+                flag= tag
                 print(f"""The efficiency predicted for your country is {efi}, 
     what meansit is classified in the environmental group {tag}.
     This group is characterized by the following description:
@@ -385,7 +389,7 @@ class Final_Model:
     Just keep this way, your country is environmental friendly and
     knows how to balance production and world care.
     """)
-
+            return flag,efi
             Final_Model.registration(self)
         except Exception as e:
             print(e)
