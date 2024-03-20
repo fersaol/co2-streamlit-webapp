@@ -279,8 +279,8 @@ def cross_validation_report(estimador:any,x:pd.DataFrame,y:pd.DataFrame,
         mean_std.append(round(np.std(val),3))
         print(f"  - {lista_score[i]}_medio: {mean_val[i]} (+/- {mean_std[i]} std)")
 
-def dataframes_charger(filename:str,
-                       route=False) -> pd.DataFrame:
+def dataframes_charger(filename:str=None,
+                       route:str=False) -> pd.DataFrame:
     """Función que importa el csv deseado desde el directorio
     
     -------------------------------------
