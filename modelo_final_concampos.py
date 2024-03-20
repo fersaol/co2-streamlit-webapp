@@ -318,73 +318,76 @@ class Final_Model:
             a string with the cluster the country belongs to, its efficiency and
             a explanation of what means being in that cluster as well as a
             recommendation."""
+        try:
+            tag = Final_Model.classification(self)[0]
+            efi = round(Final_Model.regression(self)[0],3)
 
-        tag = Final_Model.classification(self)[0]
-        efi = round(Final_Model.regression(self)[0],3)
+            if tag == 0:
+                print(f"""The efficiency predicted for your country is {efi}, 
+    what means it is classified in the environmental group {tag}.
+    This group is characterized by the following description:
 
-        if tag == 0:
-            print(f"""The efficiency predicted for your country is {efi}, 
-what means it is classified in the environmental group {tag}.
-This group is characterized by the following description:
+    ------------LOW PRODUCTION-HIGH CONTAMINATION------------
+    The energy production is low but it is not the lower compared
+    with the rest of the world energy producers. The production
+    is based on natural gas, petroleum and coal and because of
+    this energy mix the co2 emissions are high.
 
-------------LOW PRODUCTION-HIGH CONTAMINATION------------
-The energy production is low but it is not the lower compared
-with the rest of the world energy producers. The production
-is based on natural gas, petroleum and coal and because of
-this energy mix the co2 emissions are high.
+    -----------------------RECOMMENDATION----------------------
+    Your efficiency can improve a lot since your energy production
+    mix is not optimal. Focus on changing your energy sources.
+    """)
 
------------------------RECOMMENDATION----------------------
-Your efficiency can improve a lot since your energy production
-mix is not optimal. Focus on changing your energy sources.
-""")
+            elif tag == 1:
+                print(f"""The efficiency predicted for your country is {efi}, 
+    what means it is classified in the environmental group {tag}.
+    This group is characterized by the following description:
 
-        elif tag == 1:
-            print(f"""The efficiency predicted for your country is {efi}, 
-what means it is classified in the environmental group {tag}.
-This group is characterized by the following description:
+    ----------LOW PRODUCTION-LOW CONTAMINATION----------
+    The energy production is low but the contamination it also is.
+    In this group the production comes mainly from renewables but
+    also from nuclear and natural gas. The energy mix is not ideal,
+    but the emitted co2 has no great impact on environment
 
-----------LOW PRODUCTION-LOW CONTAMINATION----------
-The energy production is low but the contamination it also is.
-In this group the production comes mainly from renewables but
-also from nuclear and natural gas. The energy mix is not ideal,
-but the emitted co2 has no great impact on environment
+    --------------------RECOMMENDATION-------------------
+    As the production remains steady the country can continues this
+    way. But if the aim is to increase energy production the mix
+    should be improved in order to lower the co2 emissions. Reinforce
+    renewables""")
 
---------------------RECOMMENDATION-------------------
-As the production remains steady the country can continues this
-way. But if the aim is to increase energy production the mix
-should be improved in order to lower the co2 emissions. Reinforce
-renewables""")
+            elif tag == 2:
+                print(f"""The efficiency predicted for your country is {efi}, 
+    what means it is classified in the environmental group {tag}.
+    This group is characterized by the following description:
 
-        elif tag == 2:
-            print(f"""The efficiency predicted for your country is {efi}, 
-what means it is classified in the environmental group {tag}.
-This group is characterized by the following description:
+    ------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------
+    The energy production is very high and contamination too, so
+    you are one of the world's major suppliers. The production in
+    this group comes normally from petroleum, coal and natural
+    gas
 
-------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------
-The energy production is very high and contamination too, so
-you are one of the world's major suppliers. The production in
-this group comes normally from petroleum, coal and natural
-gas
+    -----------------------RECOMMENDATION---------------------
+    Your country has great impact on environmental care so it would
+    be good diversify the production mix enhancing renewables and
+    natural gas if possible. In any case, reducing coal and pretroleum
+    would be great.""")
 
------------------------RECOMMENDATION---------------------
-Your country has great impact on environmental care so it would
-be good diversify the production mix enhancing renewables and
-natural gas if possible. In any case, reducing coal and pretroleum
-would be great.""")
+            else:
+                print(f"""The efficiency predicted for your country is {efi}, 
+    what meansit is classified in the environmental group {tag}.
+    This group is characterized by the following description:
 
-        else:
-            print(f"""The efficiency predicted for your country is {efi}, 
-what meansit is classified in the environmental group {tag}.
-This group is characterized by the following description:
+    ------GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION------
+    The production amount is good, coming from a good balanced production
+    mix and using all of them proportionally.
 
-------GOOD BALANCE BETWEEN PRODUCTION AND CONTAMINATION------
-The production amount is good, coming from a good balanced production
-mix and using all of them proportionally.
+    -------------------------RECOMMENDATION-----------------------
+    Just keep this way, your country is environmental friendly and
+    knows how to balance production and world care.
+    """)
 
--------------------------RECOMMENDATION-----------------------
-Just keep this way, your country is environmental friendly and
-knows how to balance production and world care.
-""")
-
-        Final_Model.registration(self)
+            Final_Model.registration(self)
+        except Exception as e:
+            print(e)
+            print("Something went wrong, please check the data provided")
 
