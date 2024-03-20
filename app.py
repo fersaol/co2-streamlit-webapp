@@ -77,5 +77,5 @@ if prediction:
     pred = mymodel.Final_Model(Country,Year,GDP,Population,Energy_production,
                 Energy_consumption,CO2_emission,energy_type).run_whole_model()
     
-    resultado = st.markdown(pred)
+    resultado = st.text(pred)
 
