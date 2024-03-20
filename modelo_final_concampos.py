@@ -356,21 +356,21 @@ class Final_Model:
     renewables"""
 
             elif tag == 2:
-                flag= f"""<p>The efficiency predicted for your country is {efi}, 
-    what means it is classified in the environmental group {tag}.
+                flag= f''':rainbow[The efficiency predicted for your country is {efi},   
+    what means it is classified in the environmental group {tag}.  
     This group is characterized by the following description:  
 
-    ------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------
-    The energy production is very high and contamination too, so
-    you are one of the world's major suppliers. The production in
-    this group comes normally from petroleum, coal and natural
+    ------VERY HIGH PRODUCTION-VERY HIGH CONTAMINATION------  
+    The energy production is very high and contamination too, so  
+    you are one of the world's major suppliers. The production in  
+    this group comes normally from petroleum, coal and natural  
     gas  
 
-    -----------------------RECOMMENDATION---------------------
-    Your country has great impact on environmental care so it would
-    be good diversify the production mix enhancing renewables and
-    natural gas if possible. In any case, reducing coal and pretroleum
-    would be great.</p>"""
+    -----------------------RECOMMENDATION---------------------  
+    Your country has great impact on environmental care so it would  
+    be good diversify the production mix enhancing renewables and  
+    natural gas if possible. In any case, reducing coal and pretroleum  
+    would be great.]'''
 
             else:
                 flag= f"""The efficiency predicted for your country is {efi}, 
